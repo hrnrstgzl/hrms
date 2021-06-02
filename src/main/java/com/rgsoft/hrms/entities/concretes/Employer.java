@@ -32,6 +32,9 @@ public class Employer {
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
+	@Column(name="email")
+	private String email;
+	
 	@Column(name="password")
 	private String password;
 	
