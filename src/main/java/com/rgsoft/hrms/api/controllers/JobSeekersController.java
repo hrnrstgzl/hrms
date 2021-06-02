@@ -34,5 +34,4 @@ public class JobSeekersController {
 	public List<JobSeeker> getAll(){
 		return this.jobSeekerService.findAll();
 	}
-	
 }

@@ -29,8 +29,4 @@ public class JobSeekerManager implements JobSeekerService {
 	public List<JobSeeker> findAll() {
 		return this.jobSeekerDao.findAll();
 	}
-	
-	
-	
-	
 }
