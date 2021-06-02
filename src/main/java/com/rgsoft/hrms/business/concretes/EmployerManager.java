@@ -1,5 +1,7 @@
 package com.rgsoft.hrms.business.concretes;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +18,19 @@ public class EmployerManager implements EmployerService {
 		super();
 		this.employerDao = employerDao;
 	}
-
+	
 	@Override
 	public boolean add(Employer employer) {
 		this.employerDao.save(employer);
 		return true;
 	}
+
+	@Override
+	public List<Employer> findAll() {
+		return this.employerDao.findAll();
+	}
+
+	
+	
 	
 }

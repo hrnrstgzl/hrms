@@ -1,5 +1,7 @@
 package com.rgsoft.hrms.business.concretes;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,11 @@ public class JobSeekerManager implements JobSeekerService {
 	public boolean add(JobSeeker jobSeeker) {
 		this.jobSeekerDao.save(jobSeeker);
 		return true;
+	}
+
+	@Override
+	public List<JobSeeker> findAll() {
+		return this.jobSeekerDao.findAll();
 	}
 	
 	
