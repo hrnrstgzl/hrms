@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rgsoft.hrms.business.abstracts.JobAdvertisementService;
 import com.rgsoft.hrms.entities.concretes.JobAdvertisement;
+import com.rgsoft.hrms.entities.dtos.JobAdvertisementWithEmployerDto;
 
 @RestController
 @RequestMapping("/api/jobadvertisemens/")
@@ -41,5 +42,10 @@ public class JobAdvertisementController {
 	@GetMapping("getActiveJobAdvertisementsByEmployerId")
 	public List<JobAdvertisement> getActiveJobAdvertisementsByEmployerId(@RequestParam int employerId){
 		return this.jobAdvertisementService.getActiveJobAdvertisementsByEmployerId(employerId);
+	}
+	
+	@GetMapping("getJobAdvertisementWithEmployerDetails")
+	List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetails(){
+		return this.jobAdvertisementService.getJobAdvertisementWithEmployerDetails();
 	}
 }

@@ -79,4 +79,8 @@ public class JobAdvertisement {
 	@JoinColumn(name="employer_id")
 	private Employer employer;
 	
+	@ManyToOne()
+	@JoinColumn(name="job_position_id")
+	private JobPosition jobPosition;
+	
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.rgsoft.hrms.business.abstracts.JobAdvertisementService;
 import com.rgsoft.hrms.dataAccess.abstracts.JobAdvertisementDao;
 import com.rgsoft.hrms.entities.concretes.JobAdvertisement;
+import com.rgsoft.hrms.entities.dtos.JobAdvertisementWithEmployerDto;
 
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService{
@@ -37,6 +38,11 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	@Override
 	public List<JobAdvertisement> getActiveJobAdvertisementsByEmployerId(int employerId) {
 		return this.jobAdvertisementDao.getByIsActiveAndEmployer_Id(true, employerId);
+	}
+
+	@Override
+	public List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetails() {
+		return this.jobAdvertisementDao.getJobAdvertisementWithEmployerDetails();
 	}
 
 	
