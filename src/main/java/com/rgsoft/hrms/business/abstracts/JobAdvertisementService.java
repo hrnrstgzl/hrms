@@ -11,4 +11,5 @@ public interface JobAdvertisementService {
 	List<JobAdvertisement> getActiveJobAdvertisementsSorted();
 	List<JobAdvertisement> getActiveJobAdvertisementsByEmployerId(int employerId);
 	List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetails();
+	List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetailsByEmployerId(int id);
 }

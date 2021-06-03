@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,11 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.bytebuddy.dynamic.TypeResolutionStrategy.Lazy;
 
 @Data
 @AllArgsConstructor
@@ -71,15 +74,18 @@ public class JobAdvertisement {
 	@NotBlank(message = "Bu alan boş bırakılamaz")
 	@NotNull
 	@NotBlank
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	@JoinColumn(name="city_id")
 	private City city;
 	
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	@JoinColumn(name="employer_id")
 	private Employer employer;
 	
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	@JoinColumn(name="job_position_id")
 	private JobPosition jobPosition;
 	

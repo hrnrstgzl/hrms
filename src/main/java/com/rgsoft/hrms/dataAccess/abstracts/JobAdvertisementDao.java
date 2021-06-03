@@ -18,4 +18,15 @@ public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Int
 			+"(j.id, p.jobName, e.companyName, j.positionNumber, j.releaseDate, j.applicationDeadline) "
 			+"From JobAdvertisement j Inner Join j.employer e Inner Join j.jobPosition p")
 	List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetails();
+	
+	/*@Query("Select new com.rgsoft.hrms.entities.dtos.JobAdvertisementWithEmployerDto "
+			+"(j.id, p.jobName, e.companyName, j.positionNumber, j.releaseDate, j.applicationDeadline) "
+			+"From JobAdvertisement j Inner Join j.employer e Inner Join j.jobPosition p")*/
+	
+	
+	@Query("Select new com.rgsoft.hrms.entities.dtos.JobAdvertisementWithEmployerDto "
+			+"(j.id, p.jobName, e.companyName, j.positionNumber, j.releaseDate, j.applicationDeadline) "
+			+"From JobAdvertisement j Inner Join j.employer e Inner Join j.jobPosition p"
+			+ " where e.id=:id")
+	List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetailsByEmployerId(int id);
 }

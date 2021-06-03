@@ -44,6 +44,10 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	public List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetails() {
 		return this.jobAdvertisementDao.getJobAdvertisementWithEmployerDetails();
 	}
+	
+	public List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetailsByEmployerId(int id){
+		return this.getJobAdvertisementWithEmployerDetailsByEmployerId(id);
+	}
 
 	
 }

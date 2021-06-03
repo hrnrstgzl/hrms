@@ -48,4 +48,9 @@ public class JobAdvertisementController {
 	List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetails(){
 		return this.jobAdvertisementService.getJobAdvertisementWithEmployerDetails();
 	}
+	
+	@GetMapping("getJobAdvertisementWithEmployerDetailsByEmployerId")
+	List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetailsByEmployerId(@RequestParam int employerId){
+		return this.jobAdvertisementService.getJobAdvertisementWithEmployerDetailsByEmployerId(employerId);
+	}
 }
