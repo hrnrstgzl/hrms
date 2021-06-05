@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.rgsoft.hrms.business.abstracts.JobAdvertisementService;
@@ -47,6 +48,10 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	
 	public List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetailsByEmployerId(int id){
 		return this.jobAdvertisementDao.getJobAdvertisementWithEmployerDetailsByEmployerId(id);
+	}
+	
+	public List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetailsByEmployerIdSorted(@Param("id") int id,Sort sort){
+		return this.jobAdvertisementDao.getJobAdvertisementWithEmployerDetailsByEmployerIdSorted(id, sort);
 	}
 
 	
