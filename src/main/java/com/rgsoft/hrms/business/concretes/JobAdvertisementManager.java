@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.rgsoft.hrms.business.abstracts.JobAdvertisementService;
+import com.rgsoft.hrms.core.utilities.results.DataResult;
+import com.rgsoft.hrms.core.utilities.results.SuccessDataResult;
 import com.rgsoft.hrms.dataAccess.abstracts.JobAdvertisementDao;
 import com.rgsoft.hrms.entities.concretes.JobAdvertisement;
 import com.rgsoft.hrms.entities.dtos.JobAdvertisementWithEmployerDto;
@@ -23,36 +25,43 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	}
 
 	@Override
-	public List<JobAdvertisement> findAll() {
-		return this.jobAdvertisementDao.findAll();
+	public DataResult<List<JobAdvertisement>> findAll() {
+		List<JobAdvertisement> result = this.jobAdvertisementDao.findAll();
+		return new SuccessDataResult<List<JobAdvertisement>>(result,"Sonuçlar Listelendi");
 	}
 
 	@Override
-	public List<JobAdvertisement> getActiveJobAdvertisements() {
-		return this.jobAdvertisementDao.getByIsActive(true);
+	public DataResult<List<JobAdvertisement>> getActiveJobAdvertisements() {
+		List<JobAdvertisement> result = this.jobAdvertisementDao.getByIsActive(true);
+		return new SuccessDataResult<List<JobAdvertisement>>(result,"Sonuçlar Listelendi");
 	}
-	public List<JobAdvertisement> getActiveJobAdvertisementsSorted(){
+	
+	public DataResult<List<JobAdvertisement>> getActiveJobAdvertisementsSorted(){
 		Sort sort = Sort.by(Sort.Direction.DESC,"releaseDate");
-		return this.jobAdvertisementDao.getByIsActive(true,sort);
+		List<JobAdvertisement> result = this.jobAdvertisementDao.getByIsActive(true,sort);
+		return new SuccessDataResult<List<JobAdvertisement>>(result,"Sonuçlar Listelendi");
 	}
 
 	@Override
-	public List<JobAdvertisement> getActiveJobAdvertisementsByEmployerId(int employerId) {
-		return this.jobAdvertisementDao.getByIsActiveAndEmployer_Id(true, employerId);
+	public DataResult<List<JobAdvertisement>> getActiveJobAdvertisementsByEmployerId(int employerId) {
+		List<JobAdvertisement> result =  this.jobAdvertisementDao.getByIsActiveAndEmployer_Id(true, employerId);
+		return new SuccessDataResult<List<JobAdvertisement>>(result,"Sonuçlar Listelendi");
 	}
 
 	@Override
-	public List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetails() {
-		return this.jobAdvertisementDao.getJobAdvertisementWithEmployerDetails();
+	public DataResult<List<JobAdvertisementWithEmployerDto>> getJobAdvertisementWithEmployerDetails() {
+		List<JobAdvertisementWithEmployerDto> result = this.jobAdvertisementDao.getJobAdvertisementWithEmployerDetails();
+		return new SuccessDataResult<List<JobAdvertisementWithEmployerDto>>(result,"Sonuçlar Listelendi");
 	}
 	
-	public List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetailsByEmployerId(int id){
-		return this.jobAdvertisementDao.getJobAdvertisementWithEmployerDetailsByEmployerId(id);
+	public DataResult<List<JobAdvertisementWithEmployerDto>> getJobAdvertisementWithEmployerDetailsByEmployerId(int id){
+		List<JobAdvertisementWithEmployerDto> result = this.jobAdvertisementDao.getJobAdvertisementWithEmployerDetailsByEmployerId(id);
+		return new SuccessDataResult<List<JobAdvertisementWithEmployerDto>>(result,"Sonuçlar Listelendi");
 	}
 	
-	public List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetailsByEmployerIdSorted(@Param("id") int id,Sort sort){
-		return this.jobAdvertisementDao.getJobAdvertisementWithEmployerDetailsByEmployerIdSorted(id, sort);
+	public DataResult<List<JobAdvertisementWithEmployerDto>> getJobAdvertisementWithEmployerDetailsByEmployerIdSorted(@Param("id") int id,Sort sort){
+		return new SuccessDataResult<List<JobAdvertisementWithEmployerDto>>(this.jobAdvertisementDao.getJobAdvertisementWithEmployerDetailsByEmployerIdSorted(id, sort),"Data listeleme başarılı");
 	}
 
-	
+		
 }

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rgsoft.hrms.business.abstracts.JobPositionService;
+import com.rgsoft.hrms.core.utilities.results.DataResult;
+import com.rgsoft.hrms.core.utilities.results.Result;
 import com.rgsoft.hrms.entities.concretes.JobPosition;
 
 @RestController
@@ -23,12 +25,12 @@ public class JobPositionsController {
 	}
 	
 	@GetMapping("getAll")
-	public List<JobPosition> findAll(){
+	public DataResult<List<JobPosition>> findAll(){
 		return this.jobPositionService.findAll();
 	}
 	
 	@PostMapping("add")
-	public boolean add(@RequestBody JobPosition jobPosition) {
+	public Result add(@RequestBody JobPosition jobPosition) {
 		return this.jobPositionService.add(jobPosition);
 	}
 	

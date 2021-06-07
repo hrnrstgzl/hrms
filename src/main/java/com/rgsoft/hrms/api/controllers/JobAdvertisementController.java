@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rgsoft.hrms.business.abstracts.JobAdvertisementService;
+import com.rgsoft.hrms.core.utilities.results.DataResult;
 import com.rgsoft.hrms.entities.concretes.JobAdvertisement;
 import com.rgsoft.hrms.entities.dtos.JobAdvertisementWithEmployerDto;
 
@@ -26,37 +27,37 @@ public class JobAdvertisementController {
 	}
 	
 	@GetMapping("getAll")
-	public List<JobAdvertisement> getAll(){
+	public DataResult<List<JobAdvertisement>> getAll(){
 		return this.jobAdvertisementService.findAll();
 	}
 	
 	@GetMapping("getActiveJobAdvertisements")
-	public List<JobAdvertisement> getActiveJobAdvertisements(){
+	public DataResult<List<JobAdvertisement>> getActiveJobAdvertisements(){
 		return this.jobAdvertisementService.getActiveJobAdvertisements();
 	}
 	
 	@GetMapping("getActiveJobAdvertisementsSorted")
-	public List<JobAdvertisement> getActiveJobAdvertisementsSorted(){
+	public DataResult<List<JobAdvertisement>> getActiveJobAdvertisementsSorted(){
 		return this.jobAdvertisementService.getActiveJobAdvertisementsSorted();
 	}
 	
 	@GetMapping("getActiveJobAdvertisementsByEmployerId")
-	public List<JobAdvertisement> getActiveJobAdvertisementsByEmployerId(@RequestParam int employerId){
+	public DataResult<List<JobAdvertisement>> getActiveJobAdvertisementsByEmployerId(@RequestParam int employerId){
 		return this.jobAdvertisementService.getActiveJobAdvertisementsByEmployerId(employerId);
 	}
 	
 	@GetMapping("getJobAdvertisementWithEmployerDetails")
-	List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetails(){
+	DataResult<List<JobAdvertisementWithEmployerDto>> getJobAdvertisementWithEmployerDetails(){
 		return this.jobAdvertisementService.getJobAdvertisementWithEmployerDetails();
 	}
 	
 	@GetMapping("getJobAdvertisementWithEmployerDetailsByEmployerId")
-	List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetailsByEmployerId(@RequestParam int employerId){
+	DataResult<List<JobAdvertisementWithEmployerDto>> getJobAdvertisementWithEmployerDetailsByEmployerId(@RequestParam int employerId){
 		return this.jobAdvertisementService.getJobAdvertisementWithEmployerDetailsByEmployerId(employerId);
 	}
 	
 	@GetMapping("getJobAdvertisementWithEmployerDetailsByEmployerIdSortByReleaseDate")
-	List<JobAdvertisementWithEmployerDto> getJobAdvertisementWithEmployerDetailsByEmployerIdSortByReleaseDate(@RequestParam int employerId){
+	DataResult<List<JobAdvertisementWithEmployerDto>>  getJobAdvertisementWithEmployerDetailsByEmployerIdSortByReleaseDate(@RequestParam int employerId){
 		return this.jobAdvertisementService.getJobAdvertisementWithEmployerDetailsByEmployerIdSorted(employerId,Sort.by("releaseDate"));
 	}
 }

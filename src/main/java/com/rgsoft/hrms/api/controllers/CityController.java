@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rgsoft.hrms.business.abstracts.CityService;
+import com.rgsoft.hrms.core.utilities.results.DataResult;
 import com.rgsoft.hrms.entities.concretes.City;
 
 @RestController
@@ -23,7 +24,7 @@ public class CityController {
 	}
 	
 	@GetMapping("getAll")
-	public List<City> getAll(){
+	public DataResult<List<City>> getAll(){
 		return this.cityService.findAll();
 	}
 	

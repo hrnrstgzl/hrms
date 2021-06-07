@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rgsoft.hrms.business.abstracts.EmployerService;
+import com.rgsoft.hrms.core.utilities.results.DataResult;
+import com.rgsoft.hrms.core.utilities.results.Result;
+import com.rgsoft.hrms.core.utilities.results.SuccessDataResult;
+import com.rgsoft.hrms.core.utilities.results.SuccessResult;
 import com.rgsoft.hrms.dataAccess.abstracts.EmployerDao;
 import com.rgsoft.hrms.entities.concretes.Employer;
 
@@ -20,14 +24,15 @@ public class EmployerManager implements EmployerService {
 	}
 	
 	@Override
-	public boolean add(Employer employer) {
+	public Result add(Employer employer) {
 		this.employerDao.save(employer);
-		return true;
+		return new SuccessResult("Kayıt başarılı");
 	}
 
 	@Override
-	public List<Employer> findAll() {
-		return this.employerDao.findAll();
+	public DataResult<List<Employer>> findAll() {
+		List<Employer> result =  this.employerDao.findAll();
+		return new SuccessDataResult<>(result,"Veriler başarı ile listelendi");
 	}
 
 	

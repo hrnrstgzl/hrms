@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rgsoft.hrms.business.abstracts.JobSeekerService;
+import com.rgsoft.hrms.core.utilities.results.DataResult;
+import com.rgsoft.hrms.core.utilities.results.Result;
+import com.rgsoft.hrms.core.utilities.results.SuccessDataResult;
+import com.rgsoft.hrms.core.utilities.results.SuccessResult;
 import com.rgsoft.hrms.dataAccess.abstracts.JobSeekerDao;
 import com.rgsoft.hrms.entities.concretes.JobSeeker;
 
@@ -20,13 +24,14 @@ public class JobSeekerManager implements JobSeekerService {
 	}
 
 	@Override
-	public boolean add(JobSeeker jobSeeker) {
+	public Result add(JobSeeker jobSeeker) {
 		this.jobSeekerDao.save(jobSeeker);
-		return true;
+		return new SuccessResult("İşlem Başarılı");
 	}
 
 	@Override
-	public List<JobSeeker> findAll() {
-		return this.jobSeekerDao.findAll();
+	public DataResult<List<JobSeeker>> findAll() {
+		List<JobSeeker> result = this.jobSeekerDao.findAll();
+		return new SuccessDataResult<>(result,"Veriler Başarı ile Listelendi");
 	}
 }
