@@ -1,9 +1,14 @@
 package com.rgsoft.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "job_seekers")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","resumes","coverLetters"})
 public class JobSeeker extends User {
 	
 	@Column(name="nat_id")
@@ -41,5 +47,11 @@ public class JobSeeker extends User {
 	@NotBlank
 	@Column(name="birthday")
 	private String birthday;
+	
+	@OneToMany(mappedBy = "jobSeeker")
+	private List<Resume> resumes;
+	
+	@OneToMany(mappedBy = "jobSeeker")
+	private List<CoverLetter> coverLetters;
 
 }

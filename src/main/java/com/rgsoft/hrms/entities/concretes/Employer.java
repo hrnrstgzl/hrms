@@ -39,6 +39,7 @@ public class Employer extends User{
 	@NotBlank
 	@Column(name="phone_number")
 	private String phoneNumber;
+	
 	@Column(name="system_validation")
 	private boolean systemValidation;
 	
