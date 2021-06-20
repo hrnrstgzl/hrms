@@ -60,4 +60,8 @@ public class Resume {
 	joinColumns = @JoinColumn(name = "resume_id"),inverseJoinColumns = @JoinColumn(name = "skill_id"))
     private List<Skill> havingSkills;
 	
+	public void addSkill(Skill skill) {
+		this.havingSkills.add(skill);
+	}
+	
 }
