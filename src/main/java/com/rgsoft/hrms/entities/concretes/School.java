@@ -1,7 +1,6 @@
 package com.rgsoft.hrms.entities.concretes;
 
-import java.util.List;
-
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,5 +31,5 @@ public class School {
 	private String name;
 	
 	@OneToMany(mappedBy = "school")
-	private List<Department> departments;
+	private Set<Department> departments;
 }

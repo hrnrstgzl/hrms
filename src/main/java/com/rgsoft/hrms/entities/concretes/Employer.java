@@ -1,6 +1,6 @@
 package com.rgsoft.hrms.entities.concretes;
 
-import java.util.List;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = false, exclude={"jobAdvertisements"})
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -44,5 +44,5 @@ public class Employer extends User{
 	private boolean systemValidation;
 	
 	@OneToMany(mappedBy = "employer")		
-	private List<JobAdvertisement> jobAdvertisements;
+	private Set<JobAdvertisement> jobAdvertisements;
 }

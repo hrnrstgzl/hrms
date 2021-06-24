@@ -1,7 +1,6 @@
 package com.rgsoft.hrms.entities.concretes;
 
-import java.util.List;
-
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,9 +13,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
+@EqualsAndHashCode(callSuper = false, exclude={"jobAdvertisements","experiences"})
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -36,8 +37,8 @@ public class JobPosition {
 	private String description;
 	
 	@OneToMany(mappedBy = "jobPosition")		
-	private List<JobAdvertisement> jobAdvertisements;
+	private Set<JobAdvertisement> jobAdvertisements;
 	
 	@OneToMany(mappedBy = "jobPosition")		
-	private List<Experience> experiences;
+	private Set<Experience> experiences;
 }

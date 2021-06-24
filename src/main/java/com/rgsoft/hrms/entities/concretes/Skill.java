@@ -1,7 +1,6 @@
 package com.rgsoft.hrms.entities.concretes;
 
-import java.util.List;
-
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,5 +32,5 @@ public class Skill {
 	private String name;
 	
 	@ManyToMany(mappedBy = "havingSkills")
-    List<Resume> knowers;
+    Set<Resume> knowers;
 }

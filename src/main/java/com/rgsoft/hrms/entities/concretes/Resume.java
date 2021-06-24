@@ -1,7 +1,6 @@
 package com.rgsoft.hrms.entities.concretes;
 
-import java.util.List;
-
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,9 +17,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
+@EqualsAndHashCode(callSuper = false, exclude={"experiences","educations","resumeLanguages","havingSkills"})
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -47,18 +48,18 @@ public class Resume {
 	private JobSeeker jobSeeker;
 	
 	@OneToMany(mappedBy ="resume")
-	private List<Experience> experiences;
+	private Set<Experience> experiences;
 	
 	@OneToMany(mappedBy ="resume")
-	private List<Education> educations;
+	private Set<Education> educations;
 	
 	@OneToMany(mappedBy = "resume")
-	private List<ResumeLanguage> resumeLanguages;
+	private Set<ResumeLanguage> resumeLanguages;
 	
 	@ManyToMany
 	@JoinTable(name="resume_skill",
 	joinColumns = @JoinColumn(name = "resume_id"),inverseJoinColumns = @JoinColumn(name = "skill_id"))
-    private List<Skill> havingSkills;
+    private Set<Skill> havingSkills;
 	
 	public void addSkill(Skill skill) {
 		this.havingSkills.add(skill);

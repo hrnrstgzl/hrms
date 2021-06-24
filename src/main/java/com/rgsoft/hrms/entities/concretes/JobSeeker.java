@@ -1,6 +1,6 @@
 package com.rgsoft.hrms.entities.concretes;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = false, exclude={"resumes","coverLetters"})
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -49,9 +49,9 @@ public class JobSeeker extends User {
 	private String birthday;
 	
 	@OneToMany(mappedBy = "jobSeeker")
-	private List<Resume> resumes;
+	private Set<Resume> resumes;
 	
 	@OneToMany(mappedBy = "jobSeeker")
-	private List<CoverLetter> coverLetters;
+	private Set<CoverLetter> coverLetters;
 
 }
