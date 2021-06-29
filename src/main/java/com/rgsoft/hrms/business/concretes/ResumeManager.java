@@ -56,4 +56,10 @@ public class ResumeManager implements ResumeService{
 		return new SuccessResult("Yetenek başarı ile eklendi.");
 	}
 
+	@Override
+	public DataResult<Resume> findByJobSeekerId(int id) {
+		Resume resume = this.resumeDao.findByJobSeeker_Id(id);
+		return new SuccessDataResult<Resume>(resume);
+	}
+
 }

@@ -3,6 +3,7 @@ package com.rgsoft.hrms.entities.concretes;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "resumes")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","experiences","educations","resumeLanguages","havingSkills"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Resume {
 	
 	@Id
@@ -50,10 +51,10 @@ public class Resume {
 	@OneToMany(mappedBy ="resume")
 	private Set<Experience> experiences;
 	
-	@OneToMany(mappedBy ="resume")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy ="resume")
 	private Set<Education> educations;
 	
-	@OneToMany(mappedBy = "resume")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "resume")
 	private Set<ResumeLanguage> resumeLanguages;
 	
 	@ManyToMany

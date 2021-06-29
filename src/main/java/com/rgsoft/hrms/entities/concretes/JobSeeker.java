@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "job_seekers")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","resumes","coverLetters"})
 public class JobSeeker extends User {
-	
+		
 	@Column(name="nat_id")
 	@NotBlank(message = "Kimlik numarası alanı boş bırakılamaz")
 	@NotNull

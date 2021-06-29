@@ -27,9 +27,22 @@ public class ResumeController {
 	
 	 @GetMapping("/getAll")
 	 public DataResult<List<Resume>> getAll(){
-		 return this.resumeService.findAll();
+		 DataResult<List<Resume>> result = this.resumeService.findAll();
+		 return result;
 	 }
 	 
+	 @GetMapping("/getById")
+	 public DataResult<Resume> getResumeById(int id){
+		 DataResult<Resume> result = this.resumeService.findById(id);
+		 return result;
+	 }
+	 
+	 @GetMapping("/getByJobSeekerId")
+	 public DataResult<Resume> getResumeByJobSeekerId(int id){
+		 DataResult<Resume> result = this.resumeService.findByJobSeekerId(id);
+		 return result;
+	 }
+	 	 
 	 @PostMapping("/add")
 	 public Result add(Resume resume) {
 		 return this.resumeService.save(resume);
